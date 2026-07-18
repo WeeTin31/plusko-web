@@ -31,20 +31,72 @@ function animateNumber(el, target) {
   requestAnimationFrame(tick);
 }
 
-// Scroll reveal - sekce se objeví, jakmile najedou do viewportu.
-const revealTargets = document.querySelectorAll('.feature-card, .how-step, .price-card, .stat');
-revealTargets.forEach((el) => el.classList.add('reveal'));
+// Text reveal - každý <span> uvnitř .reveal-text se obalí vnitřním
+// řádkem, který se vyjede zdola nahoru, jakmile nadpis vjede do viewportu.
+document.querySelectorAll('.reveal-text').forEach((el) => {
+  el.querySelectorAll(':scope > span').forEach((line, i) => {
+    const inner = document.createElement('span');
+    inner.className = 'reveal-line';
+    inner.style.transitionDelay = `${i * 90}ms`;
+    inner.textContent = line.textContent;
+    line.textContent = '';
+    line.appendChild(inner);
+  });
+});
 
-const observer = new IntersectionObserver(
+const revealTextObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in');
-        observer.unobserve(entry.target);
+        revealTextObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.4 }
+);
+document.querySelectorAll('.reveal-text').forEach((el) => revealTextObserver.observe(el));
+
+// Scroll reveal se stupňovaným zpožděním podle pořadí v sekci.
+const revealGroups = document.querySelectorAll(
+  '.feature-grid, .how-steps, .pricing-grid, .stats-inner, .screens-row'
+);
+revealGroups.forEach((group) => {
+  [...group.children].forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = `${i * 90}ms`;
+  });
+});
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
       }
     });
   },
   { threshold: 0.15 }
 );
+document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-revealTargets.forEach((el) => observer.observe(el));
+// Jemný tilt efekt na hero telefonu - reaguje na pohyb myši.
+const tiltPhone = document.getElementById('tiltPhone');
+if (tiltPhone && window.matchMedia('(hover: hover)').matches) {
+  tiltPhone.addEventListener('mousemove', (e) => {
+    const rect = tiltPhone.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    tiltPhone.style.transform = `rotateY(${x * 12}deg) rotateX(${-y * 12}deg)`;
+  });
+  tiltPhone.addEventListener('mouseleave', () => {
+    tiltPhone.style.transform = '';
+  });
+}
+
+// Nav dostane jemný stín, jakmile se stránka odscrolluje.
+const nav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  nav?.classList.toggle('scrolled', window.scrollY > 12);
+});

@@ -12,11 +12,15 @@
 </head>
 <body>
 
-  <header class="nav">
+  <div class="bg-blob bg-blob-1"></div>
+  <div class="bg-blob bg-blob-2"></div>
+
+  <header class="nav" id="siteNav">
     <div class="nav-inner">
       <span class="nav-logo">Plusko</span>
       <nav class="nav-links">
         <a href="#funkce">Funkce</a>
+        <a href="#obrazovky">Appka</a>
         <a href="#jak-to-funguje">Jak to funguje</a>
         <a href="#cenik">Ceník</a>
       </nav>
@@ -42,7 +46,7 @@
       </div>
 
       <div class="hero-copy">
-        <h1>Konec papíru<br />a čárek.</h1>
+        <h1 class="reveal-text"><span>Konec papíru</span><span>a čárek.</span></h1>
         <p class="hero-sub">Zadáš, co prodáváš. Na akci klikáš na <span class="plus-inline">+1</span>. Appka počítá tržbu, hlídá sklad a na konci ti sama udělá uzávěrku.</p>
         <div class="hero-cta">
           <a href="#cenik" class="btn-primary">Vyzkoušet Plusko</a>
@@ -50,7 +54,7 @@
         </div>
       </div>
 
-      <div class="hero-phone">
+      <div class="hero-phone" id="tiltPhone">
         <div class="phone-frame">
           <div class="phone-notch"></div>
           <div class="phone-screen">
@@ -77,9 +81,9 @@
 
   <section class="stats-strip">
     <div class="stats-inner">
-      <div class="stat"><span class="stat-num">1 klik</span><span class="stat-label">= jeden zapsaný prodej</span></div>
+      <div class="stat"><span class="stat-num" data-count="1">0 klik</span><span class="stat-label">= jeden zapsaný prodej</span></div>
       <div class="stat"><span class="stat-num">0 Kč</span><span class="stat-label">za tužku a papír</span></div>
-      <div class="stat"><span class="stat-num">100 %</span><span class="stat-label">funguje bez signálu</span></div>
+      <div class="stat"><span class="stat-num" data-count="100">0 %</span><span class="stat-label">funguje bez signálu</span></div>
     </div>
   </section>
 
@@ -107,6 +111,75 @@
           <span class="feature-icon">⬇</span>
           <h3>PDF report za pár vteřin</h3>
           <p>Graf podle produktu, přehled tržeb, ke stažení jedním tlačítkem. Pošleš majiteli sítě stánků, aniž bys cokoliv přepisoval.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="screens" id="obrazovky">
+    <div class="section-inner">
+      <span class="eyebrow">Appka zevnitř</span>
+      <h2 class="reveal-text"><span>Žádné našišato UI.</span><span>Přesně tohle appka umí.</span></h2>
+
+      <div class="screens-row">
+        <div class="screen-card">
+          <div class="phone-frame phone-frame-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen phone-screen-app">
+              <div class="app-title">Co prodáváš?</div>
+              <div class="app-chips">
+                <span class="app-chip app-chip-active">Jídlo</span>
+                <span class="app-chip">Nápoje</span>
+                <span class="app-chip">Sladkosti</span>
+              </div>
+              <div class="app-row"><span>Klobása</span><span class="app-row-price">55 Kč</span></div>
+              <div class="app-row"><span>Langoš</span><span class="app-row-price">65 Kč</span></div>
+              <div class="app-row"><span>Bramborák</span><span class="app-row-price">45 Kč</span></div>
+            </div>
+          </div>
+          <span class="screen-caption">Nastavení</span>
+          <p class="screen-desc">Kategorie, ceny, volitelný sklad. Hotové za pár minut.</p>
+        </div>
+
+        <div class="screen-card screen-card-mid">
+          <div class="phone-frame phone-frame-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen phone-screen-app">
+              <div class="app-revenue">
+                <span>Tržba od poslední uzávěrky</span>
+                <strong>2 340 Kč</strong>
+              </div>
+              <div class="app-sell-row">
+                <span>Klobása</span>
+                <span class="app-sell-actions"><em>12×</em><b>+1</b></span>
+              </div>
+              <div class="app-sell-row">
+                <span>Kofola</span>
+                <span class="app-sell-actions"><em>8×</em><b>+1</b></span>
+              </div>
+            </div>
+          </div>
+          <span class="screen-caption">Prodej</span>
+          <p class="screen-desc">Velké +1, tlačítko Zpět, počítadlo. Nic mezi tebou a frontou.</p>
+        </div>
+
+        <div class="screen-card">
+          <div class="phone-frame phone-frame-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen phone-screen-app">
+              <div class="app-hero-mini">
+                <span>Tržba za uzávěrku</span>
+                <strong>4 890 Kč</strong>
+              </div>
+              <div class="app-chart">
+                <div class="app-bar" style="width: 90%"></div>
+                <div class="app-bar" style="width: 65%"></div>
+                <div class="app-bar" style="width: 40%"></div>
+              </div>
+            </div>
+          </div>
+          <span class="screen-caption">Přehled</span>
+          <p class="screen-desc">Graf podle produktu, historie uzávěrek, PDF na stažení.</p>
         </div>
       </div>
     </div>
