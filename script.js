@@ -1,4 +1,4 @@
-// Živé demo v hero sekci - stejná logika jako appka, ale bez uložení dat.
+// Živé demo v hero sekci.
 const demoPlus = document.getElementById('demoPlus');
 const demoValue = document.getElementById('demoValue');
 const demoCount = document.getElementById('demoCount');
@@ -31,40 +31,45 @@ function animateNumber(el, target) {
   requestAnimationFrame(tick);
 }
 
-// Text reveal - každý <span> uvnitř .reveal-text se obalí vnitřním
-// řádkem, který se vyjede zdola nahoru, jakmile nadpis vjede do viewportu.
+// Text reveal - řádky uvnitř .reveal-text vyjedou zdola nahoru.
 document.querySelectorAll('.reveal-text').forEach((el) => {
   el.querySelectorAll(':scope > span').forEach((line, i) => {
     const inner = document.createElement('span');
     inner.className = 'reveal-line';
-    inner.style.transitionDelay = `${i * 90}ms`;
-    inner.textContent = line.textContent;
-    line.textContent = '';
+    inner.style.transitionDelay = `${i * 100}ms`;
+    inner.innerHTML = line.innerHTML;
+    line.innerHTML = '';
     line.appendChild(inner);
   });
 });
 
-const revealTextObserver = new IntersectionObserver(
+const textObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in');
-        revealTextObserver.unobserve(entry.target);
+        textObserver.unobserve(entry.target);
       }
     });
   },
-  { threshold: 0.4 }
+  { threshold: 0.35 }
 );
-document.querySelectorAll('.reveal-text').forEach((el) => revealTextObserver.observe(el));
+document.querySelectorAll('.reveal-text').forEach((el) => textObserver.observe(el));
 
-// Scroll reveal se stupňovaným zpožděním podle pořadí v sekci.
-const revealGroups = document.querySelectorAll(
-  '.feature-grid, .how-steps, .pricing-grid, .stats-inner, .screens-row'
-);
-revealGroups.forEach((group) => {
+// Hero se odhalí hned při načtení, ne až při scrollu.
+requestAnimationFrame(() => {
+  document.querySelector('.hero .reveal-text')?.classList.add('in');
+  document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('in'), 150 + i * 120);
+  });
+});
+
+// Stupňované odhalování karet/kroků podle pořadí v sekci.
+const staggerGroups = document.querySelectorAll('.glass-grid, .how-steps, .pricing-grid, .showcase-row');
+staggerGroups.forEach((group) => {
   [...group.children].forEach((el, i) => {
     el.classList.add('reveal');
-    el.style.transitionDelay = `${i * 90}ms`;
+    el.style.transitionDelay = `${i * 100}ms`;
   });
 });
 
@@ -81,21 +86,21 @@ const revealObserver = new IntersectionObserver(
 );
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-// Jemný tilt efekt na hero telefonu - reaguje na pohyb myši.
+// Jemný tilt na skleněné kartě s telefonem.
 const tiltPhone = document.getElementById('tiltPhone');
 if (tiltPhone && window.matchMedia('(hover: hover)').matches) {
   tiltPhone.addEventListener('mousemove', (e) => {
     const rect = tiltPhone.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    tiltPhone.style.transform = `rotateY(${x * 12}deg) rotateX(${-y * 12}deg)`;
+    tiltPhone.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
   });
   tiltPhone.addEventListener('mouseleave', () => {
     tiltPhone.style.transform = '';
   });
 }
 
-// Nav dostane jemný stín, jakmile se stránka odscrolluje.
+// Nav dostane jemný stín po odscrollování.
 const nav = document.getElementById('siteNav');
 window.addEventListener('scroll', () => {
   nav?.classList.toggle('scrolled', window.scrollY > 12);

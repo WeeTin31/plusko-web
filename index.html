@@ -3,25 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Plusko — konec papíru a čárek</title>
-  <meta name="description" content="Appka pro stánkaře na akcích. Zadáš, co prodáváš, a tržbu klikáš na místě. Žádný papír, žádné čárky." />
+  <title>Plusko — prodej bez čárek</title>
+  <meta name="description" content="Appka pro stánkaře na akcích. Zadáš, co prodáváš, a tržbu klikáš na místě." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;700&family=Yellowtail&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Yellowtail&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div class="bg-blob bg-blob-1"></div>
-  <div class="bg-blob bg-blob-2"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
 
   <header class="nav" id="siteNav">
     <div class="nav-inner">
       <span class="nav-logo">Plusko</span>
       <nav class="nav-links">
         <a href="#funkce">Funkce</a>
-        <a href="#obrazovky">Appka</a>
-        <a href="#jak-to-funguje">Jak to funguje</a>
+        <a href="#appka">Appka</a>
         <a href="#cenik">Ceník</a>
       </nav>
       <a href="#cenik" class="btn-nav">Vyzkoušet</a>
@@ -30,31 +29,20 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-paper">
-        <div class="paper-sheet">
-          <span class="paper-label">Zápas 14. 7.</span>
-          <div class="tally-row">
-            <svg class="tally-group" viewBox="0 0 60 44" fill="none"><path d="M4 4v36M16 4v36M28 4v36M40 4v36M2 40 L52 6" stroke="#2b2733" stroke-width="3.4" stroke-linecap="round"/></svg>
-            <svg class="tally-group" viewBox="0 0 60 44" fill="none"><path d="M4 4v36M16 4v36M28 4v36" stroke="#2b2733" stroke-width="3.4" stroke-linecap="round"/></svg>
-          </div>
-          <div class="tally-row">
-            <svg class="tally-group" viewBox="0 0 60 44" fill="none"><path d="M4 4v36M16 4v36M28 4v36M40 4v36M2 40 L52 6" stroke="#2b2733" stroke-width="3.4" stroke-linecap="round"/></svg>
-            <svg class="tally-group" viewBox="0 0 60 44" fill="none"><path d="M4 4v36" stroke="#2b2733" stroke-width="3.4" stroke-linecap="round"/></svg>
-          </div>
-          <span class="paper-note">tužka se ztratila, počítá se z hlavy</span>
-        </div>
+      <span class="hero-eyebrow reveal">Appka pro stánkaře</span>
+      <h1 class="reveal-text">
+        <span>Prodávej.</span>
+        <span>Ne <em>počítej čárky.</em></span>
+      </h1>
+      <p class="hero-sub reveal">Zadáš, co prodáváš. Appka počítá tržbu, hlídá sklad a na konci ti sama udělá uzávěrku — v jednom tichém, elegantním rozhraní.</p>
+      <div class="hero-cta reveal">
+        <a href="#cenik" class="btn-primary">Vyzkoušet Plusko</a>
+        <a href="#appka" class="btn-ghost">Podívat se dovnitř ↓</a>
       </div>
+    </div>
 
-      <div class="hero-copy">
-        <h1 class="reveal-text"><span>Konec papíru</span><span>a čárek.</span></h1>
-        <p class="hero-sub">Zadáš, co prodáváš. Na akci klikáš na <span class="plus-inline">+1</span>. Appka počítá tržbu, hlídá sklad a na konci ti sama udělá uzávěrku.</p>
-        <div class="hero-cta">
-          <a href="#cenik" class="btn-primary">Vyzkoušet Plusko</a>
-          <a href="#jak-to-funguje" class="btn-ghost">Jak to funguje ↓</a>
-        </div>
-      </div>
-
-      <div class="hero-phone" id="tiltPhone">
+    <div class="hero-visual">
+      <div class="hero-glass" id="tiltPhone">
         <div class="phone-frame">
           <div class="phone-notch"></div>
           <div class="phone-screen">
@@ -72,138 +60,147 @@
                 <button class="demo-plus" id="demoPlus">+1</button>
               </div>
             </div>
-            <div class="demo-hint">↑ zkus si na to sáhnout</div>
+            <div class="demo-hint">zkus si na to sáhnout</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="stats-strip">
-    <div class="stats-inner">
-      <div class="stat"><span class="stat-num" data-count="1">0 klik</span><span class="stat-label">= jeden zapsaný prodej</span></div>
-      <div class="stat"><span class="stat-num">0 Kč</span><span class="stat-label">za tužku a papír</span></div>
-      <div class="stat"><span class="stat-num" data-count="100">0 %</span><span class="stat-label">funguje bez signálu</span></div>
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>Žádný papír</span><span>·</span>
+      <span>Funguje bez signálu</span><span>·</span>
+      <span>Sklad se hlídá sám</span><span>·</span>
+      <span>PDF report za pár vteřin</span><span>·</span>
+      <span>Žádný papír</span><span>·</span>
+      <span>Funguje bez signálu</span><span>·</span>
+      <span>Sklad se hlídá sám</span><span>·</span>
+      <span>PDF report za pár vteřin</span><span>·</span>
     </div>
-  </section>
+  </div>
 
   <section class="features" id="funkce">
     <div class="section-inner">
       <span class="eyebrow">Co appka umí</span>
-      <h2>Postavené na tom, jak se skutečně prodává na place</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <span class="feature-icon">＋</span>
+      <h2 class="reveal-text"><span>Postavené na tom, jak se</span><span>skutečně prodává na place</span></h2>
+
+      <div class="glass-grid">
+        <div class="glass-card">
+          <span class="glass-num">01</span>
           <h3>Prodej jedním klikem</h3>
-          <p>Produkty rozdělené do kategorií, velké tlačítko +1, tlačítko Zpět když se překlikneš. Nic složitého mezi tebou a frontou lidí.</p>
+          <p>Produkty rozdělené do kategorií, velké tlačítko +1, tlačítko Zpět když se překlikneš.</p>
         </div>
-        <div class="feature-card">
-          <span class="feature-icon">▤</span>
+        <div class="glass-card">
+          <span class="glass-num">02</span>
           <h3>Sklad se hlídá sám</h3>
-          <p>Appka ví, kolik ti zbývá, i po uzávěrce. Když dojde poslední kus, tlačítko to samo řekne — nemusíš nic přepočítávat.</p>
+          <p>Appka ví, kolik ti zbývá, i po uzávěrce. Když dojde poslední kus, appka to sama řekne.</p>
         </div>
-        <div class="feature-card">
-          <span class="feature-icon">↻</span>
+        <div class="glass-card">
+          <span class="glass-num">03</span>
           <h3>Uzávěrka s časovou značkou</h3>
-          <p>Uzavřeš směnu, appka vše uloží do historie a počítá znovu od nuly. Špatnou uzávěrku jde vzít zpět.</p>
+          <p>Uzavřeš směnu, appka vše uloží do historie a počítá znovu od nuly.</p>
         </div>
-        <div class="feature-card">
-          <span class="feature-icon">⬇</span>
+        <div class="glass-card">
+          <span class="glass-num">04</span>
           <h3>PDF report za pár vteřin</h3>
-          <p>Graf podle produktu, přehled tržeb, ke stažení jedním tlačítkem. Pošleš majiteli sítě stánků, aniž bys cokoliv přepisoval.</p>
+          <p>Graf podle produktu, přehled tržeb, ke stažení jedním tlačítkem.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="screens" id="obrazovky">
+  <section class="showcase" id="appka">
     <div class="section-inner">
       <span class="eyebrow">Appka zevnitř</span>
-      <h2 class="reveal-text"><span>Žádné našišato UI.</span><span>Přesně tohle appka umí.</span></h2>
+      <h2 class="reveal-text"><span>Tři obrazovky.</span><span>Nic navíc.</span></h2>
+    </div>
 
-      <div class="screens-row">
-        <div class="screen-card">
-          <div class="phone-frame phone-frame-sm">
-            <div class="phone-notch"></div>
-            <div class="phone-screen phone-screen-app">
-              <div class="app-title">Co prodáváš?</div>
-              <div class="app-chips">
-                <span class="app-chip app-chip-active">Jídlo</span>
-                <span class="app-chip">Nápoje</span>
-                <span class="app-chip">Sladkosti</span>
-              </div>
-              <div class="app-row"><span>Klobása</span><span class="app-row-price">55 Kč</span></div>
-              <div class="app-row"><span>Langoš</span><span class="app-row-price">65 Kč</span></div>
-              <div class="app-row"><span>Bramborák</span><span class="app-row-price">45 Kč</span></div>
+    <div class="showcase-row">
+      <div class="showcase-item reveal">
+        <div class="phone-frame phone-frame-sm">
+          <div class="phone-notch"></div>
+          <div class="phone-screen phone-screen-app">
+            <div class="app-title">Co prodáváš?</div>
+            <div class="app-chips">
+              <span class="app-chip app-chip-active">Jídlo</span>
+              <span class="app-chip">Nápoje</span>
+              <span class="app-chip">Sladkosti</span>
             </div>
+            <div class="app-row"><span>Klobása</span><span class="app-row-price">55 Kč</span></div>
+            <div class="app-row"><span>Langoš</span><span class="app-row-price">65 Kč</span></div>
+            <div class="app-row"><span>Bramborák</span><span class="app-row-price">45 Kč</span></div>
           </div>
-          <span class="screen-caption">Nastavení</span>
-          <p class="screen-desc">Kategorie, ceny, volitelný sklad. Hotové za pár minut.</p>
         </div>
-
-        <div class="screen-card screen-card-mid">
-          <div class="phone-frame phone-frame-sm">
-            <div class="phone-notch"></div>
-            <div class="phone-screen phone-screen-app">
-              <div class="app-revenue">
-                <span>Tržba od poslední uzávěrky</span>
-                <strong>2 340 Kč</strong>
-              </div>
-              <div class="app-sell-row">
-                <span>Klobása</span>
-                <span class="app-sell-actions"><em>12×</em><b>+1</b></span>
-              </div>
-              <div class="app-sell-row">
-                <span>Kofola</span>
-                <span class="app-sell-actions"><em>8×</em><b>+1</b></span>
-              </div>
-            </div>
-          </div>
-          <span class="screen-caption">Prodej</span>
-          <p class="screen-desc">Velké +1, tlačítko Zpět, počítadlo. Nic mezi tebou a frontou.</p>
-        </div>
-
-        <div class="screen-card">
-          <div class="phone-frame phone-frame-sm">
-            <div class="phone-notch"></div>
-            <div class="phone-screen phone-screen-app">
-              <div class="app-hero-mini">
-                <span>Tržba za uzávěrku</span>
-                <strong>4 890 Kč</strong>
-              </div>
-              <div class="app-chart">
-                <div class="app-bar" style="width: 90%"></div>
-                <div class="app-bar" style="width: 65%"></div>
-                <div class="app-bar" style="width: 40%"></div>
-              </div>
-            </div>
-          </div>
-          <span class="screen-caption">Přehled</span>
-          <p class="screen-desc">Graf podle produktu, historie uzávěrek, PDF na stažení.</p>
-        </div>
+        <span class="showcase-caption">Nastavení</span>
       </div>
+
+      <div class="showcase-item showcase-item-mid reveal">
+        <div class="phone-frame phone-frame-sm">
+          <div class="phone-notch"></div>
+          <div class="phone-screen phone-screen-app">
+            <div class="app-revenue">
+              <span>Tržba od poslední uzávěrky</span>
+              <strong>2 340 Kč</strong>
+            </div>
+            <div class="app-sell-row">
+              <span>Klobása</span>
+              <span class="app-sell-actions"><em>12×</em><b>+1</b></span>
+            </div>
+            <div class="app-sell-row">
+              <span>Kofola</span>
+              <span class="app-sell-actions"><em>8×</em><b>+1</b></span>
+            </div>
+          </div>
+        </div>
+        <span class="showcase-caption">Prodej</span>
+      </div>
+
+      <div class="showcase-item reveal">
+        <div class="phone-frame phone-frame-sm">
+          <div class="phone-notch"></div>
+          <div class="phone-screen phone-screen-app">
+            <div class="app-hero-mini">
+              <span>Tržba za uzávěrku</span>
+              <strong>4 890 Kč</strong>
+            </div>
+            <div class="app-chart">
+              <div class="app-bar" style="width: 90%"></div>
+              <div class="app-bar" style="width: 65%"></div>
+              <div class="app-bar" style="width: 40%"></div>
+            </div>
+          </div>
+        </div>
+        <span class="showcase-caption">Přehled</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote">
+    <div class="section-inner">
+      <p class="quote-text reveal-text"><span>„Konec papíru na stánku</span><span>znamená konec počítání za tmy.“</span></p>
     </div>
   </section>
 
   <section class="how" id="jak-to-funguje">
     <div class="section-inner">
       <span class="eyebrow">Jak to funguje</span>
-      <h2>Tři kroky, žádné školení</h2>
+      <h2 class="reveal-text"><span>Tři kroky,</span><span>žádné školení</span></h2>
       <div class="how-steps">
-        <div class="how-step">
-          <span class="how-num">01</span>
+        <div class="how-step reveal">
+          <span class="how-num">I.</span>
           <h3>Nastav místo</h3>
-          <p>Fotbalové hřiště, kolotoče, cokoliv prodáváš — zadáš produkty, ceny, případně kolik jich máš na skladě.</p>
+          <p>Fotbalové hřiště, kolotoče, cokoliv prodáváš — zadáš produkty, ceny, sklad.</p>
         </div>
-        <div class="how-step">
-          <span class="how-num">02</span>
+        <div class="how-step reveal">
+          <span class="how-num">II.</span>
           <h3>Prodávej</h3>
-          <p>Na místě jen ťukáš +1 podle toho, co komu prodáváš. Appka běží i bez signálu.</p>
+          <p>Na místě jen ťukáš +1. Appka běží i bez signálu.</p>
         </div>
-        <div class="how-step">
-          <span class="how-num">03</span>
+        <div class="how-step reveal">
+          <span class="how-num">III.</span>
           <h3>Uzavři a stáhni</h3>
-          <p>Po akci klikneš na Uzavřít. Appka ti spočítá tržbu a vygeneruje report ke stažení.</p>
+          <p>Appka ti spočítá tržbu a vygeneruje report ke stažení.</p>
         </div>
       </div>
     </div>
@@ -212,18 +209,18 @@
   <section class="pricing" id="cenik">
     <div class="section-inner">
       <span class="eyebrow">Ceník</span>
-      <h2>Levnější než blok papíru na sezónu</h2>
+      <h2 class="reveal-text"><span>Levnější než blok</span><span>papíru na sezónu</span></h2>
       <div class="pricing-grid">
-        <div class="price-card">
+        <div class="glass-card price-card reveal">
           <span class="price-name">Měsíčně</span>
-          <span class="price-value">149<span class="price-unit">Kč/měsíc</span></span>
-          <p class="price-desc">Platíš jen v měsících, kdy prodáváš. Zrušíš kdykoliv.</p>
+          <span class="price-value">149<span class="price-unit">Kč / měsíc</span></span>
+          <p class="price-desc">Platíš jen v měsících, kdy prodáváš.</p>
           <a href="mailto:ahoj@plusko.app?subject=Chci%20vyzkou%C5%A1et%20Plusko" class="btn-secondary">Napsat o přístup</a>
         </div>
-        <div class="price-card price-card-featured">
+        <div class="glass-card price-card price-card-featured reveal">
           <span class="price-badge">Ušetříš 2 měsíce</span>
           <span class="price-name">Ročně</span>
-          <span class="price-value">1 490<span class="price-unit">Kč/rok</span></span>
+          <span class="price-value">1 490<span class="price-unit">Kč / rok</span></span>
           <p class="price-desc">Pro sezónní stánkaře, co appku chtějí každý rok znovu.</p>
           <a href="mailto:ahoj@plusko.app?subject=Chci%20vyzkou%C5%A1et%20Plusko" class="btn-primary">Napsat o přístup</a>
         </div>
@@ -233,9 +230,13 @@
   </section>
 
   <footer class="footer">
-    <div class="footer-inner">
-      <span class="footer-logo">Plusko</span>
-      <span class="footer-tag">Appka pro lidi, co počítali čárky moc dlouho.</span>
+    <div class="section-inner">
+      <h2 class="footer-cta reveal-text"><span>Zkus to na</span><span>příštím zápase.</span></h2>
+      <a href="#cenik" class="btn-primary">Vyzkoušet Plusko</a>
+      <div class="footer-bottom">
+        <span class="footer-logo">Plusko</span>
+        <span class="footer-tag">Appka pro lidi, co počítali čárky moc dlouho.</span>
+      </div>
     </div>
   </footer>
 
